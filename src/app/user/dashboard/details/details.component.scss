@@ -1,0 +1,21 @@
+ 
+.movie-header-image {
+
+background-size: cover;
+}
+.container-details {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+mat-card.mat-card.mat-focus-indicator.movie-card {
+    max-width: 800px;
+}
+mat-card-content.mat-card-content p {
+    font-size: 18px;
+    margin-left: 14px;
+}
+mat-card-content.mat-card-content h4 {
+   
+    margin-left: 14px;
+}

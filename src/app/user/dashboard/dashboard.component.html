@@ -1,0 +1,46 @@
+<div class="container-dashboard" *ngIf = "!isShowDetails">
+    <mat-form-field appearance="standard">
+           <mat-label>Filter By Name</mat-label>
+           <input matInput (keyup)="applyFilter($event)" placeholder="Filter movies by name" #input>
+       </mat-form-field>
+     
+     <table mat-table [dataSource]="dataSource | filterMovies:filterValue" class="mat-elevation-z8">
+     
+       <ng-container matColumnDef="year">
+         <th mat-header-cell *matHeaderCellDef> Year </th>
+         <td mat-cell *matCellDef="let element "> {{element.year}} </td>
+       </ng-container>
+      
+       <ng-container matColumnDef="title">
+         <th mat-header-cell *matHeaderCellDef> Name </th>
+         <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+       </ng-container>
+     
+     
+       <ng-container matColumnDef="directors">
+         <th mat-header-cell *matHeaderCellDef> Directors </th>
+         <td mat-cell *matCellDef="let element"> {{element.directors}} </td>
+       </ng-container>
+     
+        
+       <ng-container matColumnDef="release_date">
+         <th mat-header-cell *matHeaderCellDef> Release Date </th>
+         <td mat-cell *matCellDef="let element"> {{element.release_date | date: 'MMMM d, y'}} </td>
+       </ng-container>
+       <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">  <button (click)= "viewDetails(element)" mat-raised-button color="primary">Read More</button> </td>
+      </ng-container>
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+     
+       <!-- Row shown when there is no matching data. -->
+       <tr class="mat-row" *matNoDataRow>
+         <td class="mat-cell" colspan="4">No movie matching the filter "{{input.value}}"</td>
+       </tr>
+     </table>
+     
+</div>
+
+<app-details *ngIf= "isShowDetails" [viewMovie]="viewMovie" (goBackState)= "goBackState($event)"></app-details>
+

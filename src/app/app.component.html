@@ -1,0 +1,13 @@
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span><mat-icon>eco</mat-icon>{{title}}</span>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="accent" style="margin-right:20px"  (click)="onDashboardClick()">Dashboard</button>
+      <button mat-raised-button color="accent" *ngIf= "isLogin" (click)="onLogoutClick()">Logout</button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+
